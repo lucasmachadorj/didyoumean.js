@@ -175,7 +175,7 @@ limitations under the License.
       // If this value is smaller than our current winning value, OR if we have no winning val yet (i.e. the
       // threshold option is set to null, meaning the caller wants a match back no matter how bad it is), then
       // this is our new winner.
-      if (winningVal === null || val < winningVal) {
+      if (winningVal === null || val <= winningVal) {
         winningVal = val;
         // Set the winner to either the value or its object, depending on the returnWinningObject option.
         if (key && didYouMean.returnWinningObject) winner.push(list[i]);
