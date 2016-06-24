@@ -105,15 +105,15 @@ Options are set on the didYouMean function object. You may change them at any ti
 
   By default, the method will return the winning string value (if any). If your list contains objects rather
   than strings, you may set returnWinningObject to true.
-  
+
   ```
   didYouMean.returnWinningObject = true;
   ```
-  
+
   This option has no effect on lists of strings.
 
 ### returnFirstMatch
-  
+
   By default, the method will search all values and return the closest match. If you're simply looking for a "good-
   enough" match, you can set your thresholds appropriately and set returnFirstMatch to true to substantially speed
   things up.
@@ -157,7 +157,8 @@ limitations under the License.
 
     // Get the edit distance to each option. If the closest one is less than 40% (by default) of str's length,
     // then return it.
-    var winner, candidate, testCandidate, val,
+    var winner = [];
+    var candidate, testCandidate, val,
         i, len = list.length;
     for (i = 0; i < len; i++) {
       // Get item.
@@ -177,8 +178,8 @@ limitations under the License.
       if (winningVal === null || val < winningVal) {
         winningVal = val;
         // Set the winner to either the value or its object, depending on the returnWinningObject option.
-        if (key && didYouMean.returnWinningObject) winner = list[i];
-        else winner = candidate;
+        if (key && didYouMean.returnWinningObject) winner.push(list[i]);
+        else winner.push(candidate);
         // If we're returning the first match, return it now.
         if (didYouMean.returnFirstMatch) return winner;
       }
